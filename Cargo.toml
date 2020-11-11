@@ -1,0 +1,17 @@
+[package]
+name = "firefly"
+version = "0.1.0"
+authors = ["Ralakus <mikhail@licas.dev>"]
+edition = "2018"
+
+[features]
+default = []
+k210 = []
+
+[profile.release]
+opt-level = 'z'  # Optimize for size.
+lto = true
+
+[dependencies]
+bitflags = "*"
+spin = "*"
