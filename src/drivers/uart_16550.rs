@@ -54,29 +54,31 @@ where
 {
     pub fn init(&mut self) {
         unsafe {
-            // disable interrupts.
+            // disable interrupts
             self.int_en.write(0x00.into());
 
-            // special mode to set baud rate.
+            // special mode to set baud rate
             self.line_ctrl.write((1 << 7).into());
 
-            // least significant byte for baud rate of 38.4K.
+            // low byte for baud rate
             self.data.write(0x01.into());
 
-            // most significant byte for baud rate of 38.4K.
+            // high byte for baud rate
             self.int_en.write(0x00.into());
 
             // leave set-baud mode,
-            // and set word length to 8 bits, no parity.
+            // and set word length to 8 bits, no parity
             self.line_ctrl.write(0x03.into());
 
             // reset and enable FIFOs.
             self.fifo_ctrl.write(((1 << 0) | (3 << 1)).into());
 
-            // enable transmit and receive interrupts.
-            self.int_en.write(((1 << 0) | (1 << 1)).into());
-
+            // mark data terminal ready, signal request to send
+            // and enable auxilliary output #2 (used as interrupt line for CPU)
             self.modem_ctrl.write(0x0B.into());
+
+            // enable transmit and receive interrupts
+            self.int_en.write(((1 << 0) | (1 << 1)).into());
         }
     }
 

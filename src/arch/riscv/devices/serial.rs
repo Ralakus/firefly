@@ -23,9 +23,9 @@ pub unsafe fn init() {
     *UART2.lock() = Some(uart2);
     *UART3.lock() = Some(uart3);
 
-    println!("COM1 ready");
-    println!("COM2 ready");
-    println!("COM3 ready");
+    println!("UART1 ready");
+    println!("UART2 ready");
+    println!("UART3 ready");
 }
 
 #[cfg(not(feature = "k210"))]
@@ -36,5 +36,5 @@ pub unsafe fn init() {
 
     *UART1.lock() = Some(uart1);
 
-    println!("COM1 ready");
+    println!("UART1 ready");
 }
