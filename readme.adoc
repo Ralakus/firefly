@@ -6,6 +6,7 @@ Firefly is an L4 inspired microkernel in Rust. Firefly is mainly for RISC-V but 
 == How to run
 1. Run `make hdd` to make the qemu hdd image
 2. Run `cargo run`
+
 It's that simple
 
 == How to debug
