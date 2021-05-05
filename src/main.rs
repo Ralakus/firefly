@@ -11,20 +11,27 @@
 extern crate bitflags;
 extern crate spin;
 
+/// Target architecture specific code.
 #[macro_use]
 pub mod arch;
 pub use arch::*;
 
+/// Includes basic universal IO code.
 pub mod io;
 pub use io::*;
 
+/// Rust's panic and abort code.
 pub mod panic;
 
+/// Includes basic universal drivers.
 pub mod drivers;
 
+/// Basic shell max character amount per line.
 const BUFFER_SIZE: usize = 128;
+/// Basic shell max arguments per command.
 const ARG_BUFFER_SIZE: usize = 32;
 
+/// Called by `kstart()` which is found in `arch/[target]`.
 fn kmain() -> ! {
     println!("--==firefly==--");
     print!(">> ");

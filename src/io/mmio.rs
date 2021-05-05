@@ -10,11 +10,13 @@ pub struct Mmio<T> {
 }
 
 impl<T> Mmio<T> {
+    /// # Safety
     pub unsafe fn zeroed() -> Self {
         Self {
             address: MaybeUninit::zeroed(),
         }
     }
+    /// # Safety
     pub unsafe fn uninit() -> Self {
         Self {
             address: MaybeUninit::uninit(),

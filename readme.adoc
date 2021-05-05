@@ -1,0 +1,23 @@
+= Firefly OS
+
+== What it is
+Firefly is an L4 inspired microkernel in Rust. Firefly is mainly for RISC-V but may have support for other architectures in the future. 
+
+== How to run
+1. Run `make hdd` to make the qemu hdd image
+2. Run `cargo run`
+It's that simple
+
+== How to debug
+1. Run `make qemu-gdb` which opens a gdb server at `localhost:1234`
+[NOTE]
+The virtual machine won't run until a debugger is connected
+
+=== How to connect to gdb server
+
+==== Using VSCode
+Launch `(gdb) Launch` config through the debug menu
+
+==== Other
+Connect to gdb server at `localhost:1234`
+
